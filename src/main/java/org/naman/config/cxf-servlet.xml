@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:beans="http://cxf.apache.org/configuration/beans"
+	xsi:schemaLocation="http://cxf.apache.org/configuration/beans http://cxf.apache.org/schemas/configuration/cxf-beans.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+	
+	<jaxrs:server id="demo" address="/employeeservice">
+	
+		<jaxrs:serviceBeans>
+			<bean class="org.naman.ws.EmployeeOperationImpl" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonprovider"/>
+		</jaxrs:providers>
+	</jaxrs:server>
+	<bean id="jacksonprovider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+</beans>
